@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- cacher les bouton "create" et "import" dans la vue liste de l'ajustement de stock -->
+    <!-- <record id="view_inventory_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.inventory.tree.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="create">0</attribute>
+                <attribute name="import">0</attribute>
+            </xpath>
+        </field>
+    </record> -->
+
+    <!-- cacher les bouton "create" et "edit" dans la vue formulaire de l'ajustement de stock -->
+    <!-- <record id="view_inventory_form_inherit" model="ir.ui.view">
+        <field name="name">stock.inventory.form.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="create">0</attribute>
+                <attribute name="edit">0</attribute>
+            </xpath>
+        </field>
+    </record> -->
+
+    <!-- cacher le bouton "Forcer la disponibilité" dans la vue formulaire de stock picking -->
+    <record id="view_picking_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='force_assign']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock.menu_action_inventory_form" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, False, [ref('group_perm_user')])]"/>
+    </record>
+    
+</odoo>
